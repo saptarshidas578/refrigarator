@@ -1,157 +1,103 @@
-# 🧊 ESP32 Dual-Zone Refrigerator Environmental Monitoring System
+# 🧊 ESP32 Smart Thermoelectric Refrigerator
 
-An ESP32-based embedded monitoring system designed to measure and track temperature and humidity in multiple refrigeration zones using dual SHT40 high-precision sensors connected through independent I2C buses.
+A custom-built 11-liter smart thermoelectric refrigerator powered by an ESP32 microcontroller and TEC1-12706 Peltier modules. The project was developed to explore embedded systems, power electronics, thermal management, and real-world control systems.
 
-This project demonstrates sensor interfacing, multi-bus I2C communication, embedded software development, and real-time environmental monitoring using the ESP32 platform.
+Unlike conventional compressor-based refrigerators, this system uses thermoelectric cooling based on the Peltier effect, providing a compact, refrigerant-free, and low-maintenance cooling solution.
 
 ---
 
-## 🚀 Features
+## Features
 
-* Dual SHT40 temperature and humidity sensors
-* Independent I2C buses for reliable sensor communication
-* Real-time temperature monitoring
-* Real-time humidity monitoring
-* Automatic I2C device detection and scanning
-* High-precision sensor measurements
-* Serial debugging and diagnostics
+* Real-time temperature and humidity monitoring
+* ESP32-based control system
+* PWM-controlled thermoelectric cooling
+* MOSFET driver stage for high-current TEC control
+* LCD-based live system monitoring
+* Dual SHT40 environmental sensing
+* Active hot-side cooling with heatsinks and fans
 * Modular and scalable architecture
-* Built using PlatformIO and Arduino Framework
 
 ---
 
-## 🛠 Hardware Used
+## Hardware Components
 
-### Microcontroller
-
-* ESP32 Development Board
-
-### Sensors
-
-* 2 × SHT40 Temperature & Humidity Sensors
-
----
-
-## 🔌 Wiring
-
-### Sensor 1 (I2C Bus 1)
-
-| ESP32  | SHT40 |
-| ------ | ----- |
-| GPIO21 | SDA   |
-| GPIO22 | SCL   |
-| 3.3V   | VCC   |
-| GND    | GND   |
-
-### Sensor 2 (I2C Bus 2)
-
-| ESP32  | SHT40 |
-| ------ | ----- |
-| GPIO32 | SDA   |
-| GPIO33 | SCL   |
-| 3.3V   | VCC   |
-| GND    | GND   |
+| Component             | Description                    |
+| --------------------- | ------------------------------ |
+| ESP32-WROOM-32        | Main controller                |
+| TEC1-12706            | Thermoelectric cooling modules |
+| SHT40                 | Temperature & humidity sensor  |
+| MOSFET Driver Circuit | PWM power control              |
+| 16×2 LCD              | Real-time display              |
+| Aluminium Heatsinks   | Heat dissipation               |
+| Cooling Fans          | Forced-air cooling             |
+| Corsair CV450 PSU     | System power supply            |
 
 ---
 
-## 📋 Software Stack
+## System Architecture
 
-* ESP32 Arduino Framework
-* PlatformIO
-* C++
-* Wire Library
-* Adafruit SHT4x Library
-
----
-
-## ⚙️ System Workflow
-
-1. ESP32 boots and initializes serial communication.
-2. Both I2C buses are scanned for connected devices.
-3. Each SHT40 sensor is detected and initialized.
-4. Sensors are configured for high-precision measurements.
-5. Temperature and humidity readings are continuously collected.
-6. Data is displayed through the serial monitor every 2 seconds.
+1. SHT40 sensors continuously monitor environmental conditions.
+2. ESP32 processes sensor data in real time.
+3. PWM signals regulate cooling power delivered to the TEC modules.
+4. MOSFET drivers handle high-current switching.
+5. LCD displays live system information.
+6. Heatsinks and fans remove heat from the hot side of the Peltier modules.
 
 ---
 
-## 📊 Example Output
+## Performance
 
-```text
-👋 System Initialization Successful!
-
-🔍 I2C Scan on Wire1 (GPIO21=SDA, GPIO22=SCL)
-✅ I2CBUS_1 Device found at 0x44
-
-🔍 I2C Scan on Wire2 (GPIO32=SDA, GPIO33=SCL)
-✅ I2CBUS_2 Device found at 0x44
-
-✅ SHT40_1 initialized
-✅ SHT40_2 initialized
-
-T_1: 4.25 °C | RH_1: 82.1 %
-T_2: -17.80 °C | RH_2: 61.4 %
-```
+* Internal chamber volume: **11 Liters**
+* Ambient temperature: **~38°C**
+* Lowest achieved chamber temperature: **22°C**
+* Temperature reduction: **12–13°C below ambient**
+* Power consumption: **300–330 W**
 
 ---
 
-## 📁 Project Structure
+## Engineering Challenges
 
-```text
-.
-├── include/
-├── lib/
-├── src/
-│   └── main.cpp
-├── test/
-├── platformio.ini
-└── README.md
-```
+### Thermal Management
 
----
+The most significant challenge was maintaining a low hot-side temperature. Since Peltier efficiency decreases rapidly as hot-side temperature rises, multiple heatsink and airflow configurations were tested.
 
-## 🎯 Applications
+### Power Delivery
 
-* Refrigerator Monitoring
-* Freezer Monitoring
-* Cold Storage Systems
-* Food Preservation Monitoring
-* Pharmaceutical Storage Monitoring
-* Environmental Data Logging
-* Smart IoT Appliances
+The TEC modules require substantial current. Designing a reliable MOSFET-based switching stage and stable power distribution system was critical for safe operation.
+
+### System Optimization
+
+Several iterations were required to balance cooling performance, airflow, power consumption, and thermal stability.
 
 ---
 
-## 🔮 Future Improvements
+## Future Improvements
 
-* Wi-Fi connectivity
-* Cloud dashboard integration
-* MQTT support
-* Mobile notifications
-* Data logging to SD card
-* Web-based monitoring interface
-* OLED/LCD display support
-* Historical trend analysis
+* PID temperature control
+* Wi-Fi remote monitoring
+* Mobile application integration
+* Data logging and analytics
+* Improved insulation materials
+* Optimized airflow channels
+* Higher efficiency heatsinks and fans
 
 ---
 
-## 🧠 Skills Demonstrated
+## Skills Demonstrated
 
 * Embedded Systems Development
 * ESP32 Programming
-* I2C Communication
+* Power Electronics
+* PWM Motor/Power Control
 * Sensor Interfacing
-* C/C++ Programming
-* PlatformIO Development Environment
-* Hardware Debugging
-* Real-Time Data Acquisition
+* Thermal System Design
+* Hardware Prototyping
+* System Debugging & Optimization
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 **Saptarshi Das**
 
-Passionate about Embedded Systems, IoT, Robotics, and Hardware-Software Integration.
-
-If you found this project interesting, feel free to ⭐ the repository.
+An embedded systems and IoT enthusiast passionate about designing intelligent hardware solutions and exploring real-world engineering challenges.
