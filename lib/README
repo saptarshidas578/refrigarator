@@ -1,0 +1,179 @@
+# Refrigerator Temperature & Humidity Monitoring System
+
+## Overview
+
+This project is an ESP32-based dual-zone temperature and humidity monitoring system designed for refrigeration applications. The system uses two independent I2C buses to communicate with two SHT40 temperature and humidity sensors, allowing simultaneous monitoring of multiple compartments such as refrigerator and freezer sections.
+
+The project continuously measures environmental conditions and outputs real-time sensor readings through the serial monitor for debugging, testing, and data analysis purposes.
+
+---
+
+## Features
+
+* Dual independent I2C buses
+* Simultaneous monitoring of two SHT40 sensors
+* Real-time temperature measurement
+* Real-time humidity measurement
+* Automatic I2C device scanning during startup
+* Detailed serial debugging output
+* Sensor initialization verification
+* Error detection and reporting
+* Configurable debug levels
+* High precision sensor measurements
+* ESP32-based architecture
+* PlatformIO compatible
+
+---
+
+## Hardware Requirements
+
+### Microcontroller
+
+* ESP32 Development Board
+
+### Sensors
+
+* 2 × SHT40 Temperature & Humidity Sensors
+
+### Connections
+
+#### Sensor 1 (I2C Bus 1)
+
+| ESP32 Pin | SHT40 |
+| --------- | ----- |
+| GPIO21    | SDA   |
+| GPIO22    | SCL   |
+| 3.3V      | VCC   |
+| GND       | GND   |
+
+#### Sensor 2 (I2C Bus 2)
+
+| ESP32 Pin | SHT40 |
+| --------- | ----- |
+| GPIO32    | SDA   |
+| GPIO33    | SCL   |
+| 3.3V      | VCC   |
+| GND       | GND   |
+
+---
+
+## Software Requirements
+
+* PlatformIO
+* Visual Studio Code
+* ESP32 Arduino Framework
+
+### Required Libraries
+
+```ini
+Adafruit SHT4x Library
+Adafruit BusIO
+Wire
+```
+
+---
+
+## Startup Sequence
+
+During startup the firmware performs the following operations:
+
+1. Initializes serial communication.
+2. Scans I2C Bus 1 for connected devices.
+3. Scans I2C Bus 2 for connected devices.
+4. Detects and initializes Sensor 1.
+5. Detects and initializes Sensor 2.
+6. Configures both sensors for High Precision mode.
+7. Begins continuous environmental monitoring.
+
+---
+
+## Example Serial Output
+
+```text
+👋 System Initialization Successful!
+
+🔍 I2C Scan on Wire1 (GPIO21=SDA, GPIO22=SCL)
+✅ I2CBUS_1 Device found at 0x44
+
+🔍 I2C Scan on Wire2 (GPIO32=SDA, GPIO33=SCL)
+✅ I2CBUS_2 Device found at 0x44
+
+✅ SHT40_1 initialized
+✅ SHT40_2 initialized
+
+T_1: 4.25 °C | RH_1: 82.1 %
+T_2: -17.80 °C | RH_2: 61.4 %
+```
+
+---
+
+## Debug Levels
+
+The firmware supports multiple debug levels:
+
+```cpp
+#define __DEBUG_LEVEL_SILENT__      0
+#define __DEBUG_LEVEL_ERROR__       1
+#define __DEBUG_LEVEL_ESSENTIAL__   2
+#define __DEBUG_LEVEL_VERBOSE__     3
+```
+
+Current configuration:
+
+```cpp
+#define __DEBUG_LEVEL__ __DEBUG_LEVEL_VERBOSE__
+```
+
+This setting enables detailed startup diagnostics and live sensor readings.
+
+---
+
+## Project Structure
+
+```text
+├── include/
+├── lib/
+├── src/
+│   └── main.cpp
+├── test/
+├── platformio.ini
+└── README.md
+```
+
+---
+
+## Applications
+
+This project can be used for:
+
+* Refrigerator monitoring
+* Freezer monitoring
+* Cold storage systems
+* Food preservation monitoring
+* Pharmaceutical storage monitoring
+* Environmental logging
+* IoT refrigeration systems
+* Smart appliance development
+
+---
+
+## Future Improvements
+
+* Wi-Fi connectivity
+* MQTT integration
+* Cloud data logging
+* Web dashboard
+* Historical data storage
+* SD card logging
+* Mobile app integration
+* Alert notifications
+* OLED/LCD display support
+* Remote monitoring
+
+---
+
+## Author
+
+Saptarshi Das
+
+ESP32-based refrigeration monitoring system utilizing dual I2C buses and SHT40 high-precision environmental sensors for reliable temperature and humidity measurement.
