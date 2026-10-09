@@ -68,11 +68,11 @@ pio run -t monitor -b 115200
 
 - **Author:** [saptarshi2007 (saptarshidas578)](https://github.com/saptarshidas578)
 - **Institution:** B.Tech Electrical & Computer Science Engineering, VIT Vellore
-- **LinkedIn:** TODO(author): add link
+- **LinkedIn:** https://www.linkedin.com/in/saptarshi-das-3255673a1/
 
 ---
 
 ## License
 
-Recommended: [MIT License](https://opensource.org/licenses/MIT).  
-*TODO(author): confirm license selection.*
+[MIT License](https://opensource.org/licenses/MIT).  
+
