@@ -12,6 +12,36 @@ A custom-built 11-liter thermoelectric cooling and environmental monitoring syst
 
 The ESP32 Smart Thermoelectric Refrigerator is an embedded hardware cooling and climate monitoring system built for an 11-liter chamber. Rather than using conventional mechanical vapor-compression refrigeration, the system implements solid-state cooling via TEC1-12706 Peltier modules driven by high-current MOSFET power stages. An ESP32 microcontroller manages dual independent I2C buses to poll dual Adafruit SHT40 temperature and humidity sensors, adjusting PWM cooling levels to achieve thermal stabilization up to 13°C below ambient.
 
+<p align="center">
+  <img src="docs/images/complete_refrigerator_assembly.jpg" alt="ESP32 Thermoelectric Refrigerator Prototype" width="550"/>
+  <br>
+  <em><strong>Figure 1:</strong> Fully assembled 11-liter smart thermoelectric refrigerator prototype showing the insulated cold chamber, top-mounted quad heatsink-fan heat rejection array, and transparent electronics control unit.</em>
+</p>
+
+---
+
+
+## Hardware Prototype & Subsystems
+
+<p align="center">
+  <img src="docs/images/control_circuitry_enclosure.jpg" alt="Control Circuitry & Enclosure" width="280"/>
+  &nbsp;
+  <img src="docs/images/heatsink_fan_assembly.jpg" alt="Quad Heatsink Fan Heat Dissipation Array" width="280"/>
+  &nbsp;
+  <img src="docs/images/cold_chamber_interior.jpg" alt="11-Liter Insulated Cold Storage Chamber" width="280"/>
+</p>
+
+<p align="center">
+  <em><strong>Hardware Subsystems (Left to Right):</strong>
+  <br>
+  <strong>(1) Control & Driver Enclosure:</strong> ESP32 microcontroller, 1602 LCD diagnostics display, N-channel MOSFET switching bank on aluminium heatsinks, driver transistors, and enclosure cooling fan.
+  <br>
+  <strong>(2) Thermal Dissipation Stack:</strong> Quad 12V DC brushless fan array (with wire finger guards) mounted over finned aluminium heatsinks for hot-junction Peltier heat rejection.
+  <br>
+  <strong>(3) Insulated Cold Chamber:</strong> High-density polystyrene insulated 11-liter chamber with cold-side thermal conduction base showing active moisture condensation.
+  </em>
+</p>
+
 ---
 
 ## Technical Specifications
@@ -74,5 +104,4 @@ pio run -t monitor -b 115200
 
 ## License
 
-Recommended: [MIT License](https://opensource.org/licenses/MIT).  
-*TODO(author): confirm license selection.*
+This project is licensed under the [MIT License](LICENSE).
